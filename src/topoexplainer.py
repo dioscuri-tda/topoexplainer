@@ -21,7 +21,8 @@ class TopoExplainer:
 
 
     def _average_over_balls(self, values):
-        return [np.mean(values[in_ball_ids]) for in_ball_ids in self.ball_mapper.points_covered_by_landmarks]
+        # TODO: check if this is correct
+        return [np.mean(values[in_ball_ids]) for in_ball_ids in self.ball_mapper.points_covered_by_landmarks.values()]
 
     def explain_shap_space(self, eps: float):
         self.ball_mapper = BallMapper(X=self.shap_values.values, eps=eps, verbose=False)
